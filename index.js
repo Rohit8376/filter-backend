@@ -27,6 +27,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage})
 
+app.get("/", (req,res)=>{
+   res.send("Server is Running")
+})
+
 app.post('/add', upload.single('img') , add)
 
 app.get('/getdata/:data',(req,res)=>{  
@@ -47,6 +51,8 @@ app.get('/getdata/:data',(req,res)=>{
         })
     }
 })
+
+
 
 app.listen(process.env.PORT || 2000, ()=>{
     console.log("server is runnning on port "+ 2000)
